@@ -1,4 +1,4 @@
-const Routes = [
+export default [
   {
     method: 'GET',
     path: '/',
@@ -32,5 +32,3 @@ const Routes = [
     }
   }
 ]
-
-module.exports = Routes

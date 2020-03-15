@@ -1,14 +1,13 @@
 'use strict';
 
 // convert to TypeScript
-
-const Hapi = require('@hapi/hapi')
+import { Server } from '@hapi/hapi'
 const Vision = require('@hapi/vision')
-const Handlebars = require('handlebars')
-const Path = require('path')
-const Routes = require('./routes')
+import Handlebars from 'handlebars'
+import * as Path from 'path'
+import Routes from './routes'
 
-const server = Hapi.server({
+const server = new Server({
     port: 3000,
     host: 'localhost',
     routes: {
@@ -24,6 +23,7 @@ exports.init = async () => {
     await server.register(require('inert'));
     await server.register(Vision)
 
+    // @ts-ignore
     server.views({
       engines: { html: Handlebars },
       relativeTo: __dirname,
@@ -35,10 +35,11 @@ exports.init = async () => {
     return server
 };
 
-exports.start = async () => {
+export default async function start() {
     await server.register(require('inert'));
     await server.register(Vision)
 
+    // @ts-ignore
     server.views({
       engines: { html: Handlebars },
       relativeTo: __dirname,
