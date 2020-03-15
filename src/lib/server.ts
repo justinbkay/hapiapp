@@ -4,7 +4,7 @@
 import { Server } from '@hapi/hapi'
 const Vision = require('@hapi/vision')
 import Handlebars from 'handlebars'
-import * as Path from 'path'
+import Path from 'path'
 import Routes from './routes'
 
 const server = new Server({
