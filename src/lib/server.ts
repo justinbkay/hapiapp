@@ -20,7 +20,7 @@ const server = new Server({
 server.route(Routes)
 
 exports.init = async (): Promise<Hapi.Server> => {
-    await server.register(require('inert'));
+    await server.register(require('@hapi/inert'));
     await server.register(Vision)
 
     // @ts-ignore
@@ -36,7 +36,7 @@ exports.init = async (): Promise<Hapi.Server> => {
 };
 
 export default async function start(): Promise<Hapi.Server> {
-    await server.register(require('inert'));
+    await server.register(require('@hapi/inert'));
     await server.register(Vision)
 
     // @ts-ignore
