@@ -45,6 +45,6 @@ describe('GET /', () => {
             method: 'get',
             url: '/index'
         });
-        expect(res.statusCode).to.equal(200);
+        expect(res.result).to.include('<h1>aosdmfasdf</h1>')
     });
 });
