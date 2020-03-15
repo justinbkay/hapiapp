@@ -6,12 +6,13 @@
   "author": "JBK",
   "license": "MIT",
   "scripts": {
-    "test": "lab -v **/*.test.js",
+    "test": "node_modules/ts-node/dist/bin.js **/*.test.js",
     "start": "nodemon -e ts  --exec \"yarn run compile\"",
     "compile": "tsc && yarn run copy-template && node ./dist/app.js",
     "copy-template": "copyfiles -u 1 ./src/**/*.html ./dist"
   },
   "dependencies": {
+    "@hapi/boom": "^9.1.0",
     "@hapi/hapi": "^19.1.1",
     "@hapi/vision": "^6.0.0",
     "handlebars": "^4.7.3",
@@ -24,6 +25,7 @@
     "@types/node": "^13.9.1",
     "copyfiles": "^2.2.0",
     "nodemon": "^2.0.2",
+    "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
   }
 }
