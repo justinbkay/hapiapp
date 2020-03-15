@@ -1,15 +1,18 @@
+import Boom from "@hapi/boom";
+import { ResponseToolkit, Request } from "@hapi/hapi";
+
 export default [
   {
     method: 'GET',
     path: '/',
-    handler: (request, h) => {
+    handler: (request: Request, h: ResponseToolkit) => {
       return '<h1>Hello World!</h1>';
     }
   },
   {
     method: 'GET',
     path: '/user/{name}',
-    handler: (request, h) => {
+    handler: (request: Request, h: ResponseToolkit) => {
       return `<h1>Hello ${request.params.name}!</h1>`;
 
     }
@@ -17,14 +20,16 @@ export default [
   {
     method: 'GET',
     path: '/about',
-    handler: (request, h) => {
+    handler: (request: Request, h: ResponseToolkit) => {
+      // @ts-ignore
       return h.file('about.html')
     }
   },
   {
     method: 'GET',
     path: '/index',
-    handler: (request, h) => {
+    handler: (request: Request, h: ResponseToolkit) => {
+      // @ts-ignore
       return h.view('index', {
         title: 'aosdmfasdf',
         message: 'alsdf alsdf alsdkf asdf a'
