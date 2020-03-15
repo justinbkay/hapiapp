@@ -1,8 +1,8 @@
 'use strict';
 
 // convert to TypeScript
-import { Server } from '@hapi/hapi'
-const Vision = require('@hapi/vision')
+import Hapi, { Server } from '@hapi/hapi'
+import Vision from '@hapi/vision'
 import Handlebars from 'handlebars'
 import Path from 'path'
 import Routes from './routes'
@@ -19,7 +19,7 @@ const server = new Server({
 
 server.route(Routes)
 
-exports.init = async () => {
+exports.init = async (): Promise<Hapi.Server> => {
     await server.register(require('inert'));
     await server.register(Vision)
 
@@ -35,7 +35,7 @@ exports.init = async () => {
     return server
 };
 
-export default async function start() {
+export default async function start(): Promise<Hapi.Server> {
     await server.register(require('inert'));
     await server.register(Vision)
 

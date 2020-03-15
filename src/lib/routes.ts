@@ -5,22 +5,21 @@ export default [
   {
     method: 'GET',
     path: '/',
-    handler: (request: Request, h: ResponseToolkit) => {
+    handler: (request: Request , h: ResponseToolkit): string => { // eslint-disable-line @typescript-eslint/no-unused-vars
       return '<h1>Hello World!</h1>';
     }
   },
   {
     method: 'GET',
     path: '/user/{name}',
-    handler: (request: Request, h: ResponseToolkit) => {
+    handler: (request: Request, h: ResponseToolkit): string => { // eslint-disable-line @typescript-eslint/no-unused-vars
       return `<h1>Hello ${request.params.name}!</h1>`;
-
     }
   },
   {
     method: 'GET',
     path: '/about',
-    handler: (request: Request, h: ResponseToolkit) => {
+    handler: (request: Request, h: ResponseToolkit): string => { // eslint-disable-line @typescript-eslint/no-unused-vars
       // @ts-ignore
       return h.file('about.html')
     }
@@ -28,7 +27,7 @@ export default [
   {
     method: 'GET',
     path: '/index',
-    handler: (request: Request, h: ResponseToolkit) => {
+    handler: (request: Request, h: ResponseToolkit): string => { // eslint-disable-line @typescript-eslint/no-unused-vars
       // @ts-ignore
       return h.view('index', {
         title: 'aosdmfasdf',
@@ -39,7 +38,7 @@ export default [
   {
     method: [ 'GET', 'POST' ],
     path: '/{any*}',
-    handler: (request: Request, h: ResponseToolkit) => {
+    handler: (request: Request, h: ResponseToolkit): string | Boom.Boom => {
       const accept = request.headers['content-type']
 
       if (accept && accept.match(/json/)) {

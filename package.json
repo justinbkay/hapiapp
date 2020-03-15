@@ -6,9 +6,10 @@
   "author": "JBK",
   "license": "MIT",
   "scripts": {
-    "test": "node_modules/ts-node/dist/bin.js **/*.test.js",
+    "test": "yarn run lint && node_modules/ts-node/dist/bin.js **/*.test.js",
     "start": "nodemon -e ts  --exec \"yarn run compile\"",
     "compile": "tsc && yarn run copy-template && node ./dist/app.js",
+    "lint": "eslint . --ext .ts,.tsx",
     "copy-template": "copyfiles -u 1 ./src/**/*.html ./dist"
   },
   "dependencies": {
@@ -22,8 +23,13 @@
     "@hapi/code": "^8.0.1",
     "@hapi/lab": "^22.0.4",
     "@types/hapi__hapi": "^19.0.2",
+    "@types/hapi__vision": "^5.5.1",
+    "@types/inert": "^5.1.2",
     "@types/node": "^13.9.1",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
     "copyfiles": "^2.2.0",
+    "eslint": "^6.8.0",
     "nodemon": "^2.0.2",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
