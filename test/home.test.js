@@ -71,4 +71,12 @@ describe('GET /', () => {
         });
         expect(res.result).to.include('<h1>aosdmfasdf</h1>')
     });
+
+    it('/catfacts responds with 200', async () => {
+        const res = await server.inject({
+            method: 'get',
+            url: '/catfacts'
+        });
+        expect(res.statusCode).to.equal(200)
+    })
 });

@@ -1,5 +1,7 @@
 import Boom from "@hapi/boom";
 import { ResponseToolkit, Request } from "@hapi/hapi";
+import got from "got"
+import { CatFact } from "./catfact"
 
 export default [
   {
@@ -36,6 +38,19 @@ export default [
     }
   },
   {
+    method: 'GET',
+    path: '/catfacts',
+    handler: async (): Promise<string> => {
+      const body: CatFact = await got.get("https://cat-fact.herokuapp.com/facts/random", {
+        maxRedirects: 3,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).json()
+      return body.text;
+    }
+  },
+  {
     method: [ 'GET', 'POST' ],
     path: '/{any*}',
     handler: (request: Request, h: ResponseToolkit): string | Boom.Boom => {
@@ -48,5 +63,5 @@ export default [
       // @ts-ignore
       return h.view('404').code(404)
     }
-  }
+  },
 ]
