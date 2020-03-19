@@ -21,8 +21,7 @@ export default [
   {
     method: 'GET',
     path: '/about',
-    handler: (request: Request, h: ResponseToolkit): string => { // eslint-disable-line @typescript-eslint/no-unused-vars
-      // @ts-ignore
+    handler: (request: Request, h: ResponseToolkit): ResponseObject => { // eslint-disable-line @typescript-eslint/no-unused-vars
       return h.file('about.html')
     }
   },

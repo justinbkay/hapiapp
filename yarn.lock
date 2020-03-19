@@ -571,6 +571,13 @@
     "@types/hapi__shot" "*"
     "@types/node" "*"
 
+"@types/hapi__inert@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@types/hapi__inert/-/hapi__inert-5.2.0.tgz#c6bd1a2f18c480eb19e824a483589c26450578fd"
+  integrity sha512-TQ7F3iv1QOnXY23Vg7yZnFhwRqfwVhvv1j8v96tws71azghylZa4NaUnM4DbxcN0hy3CPwGhJhsbrYSTREk5xg==
+  dependencies:
+    "@types/hapi__hapi" "*"
+
 "@types/hapi__joi@*":
   version "16.0.12"
   resolved "https://registry.yarnpkg.com/@types/hapi__joi/-/hapi__joi-16.0.12.tgz#fb9113f17cf5764d6b3586ae9817d1606cc7c90c"
