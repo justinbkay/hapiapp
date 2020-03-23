@@ -15,6 +15,8 @@ export default [
     method: 'GET',
     path: '/user/{name}',
     handler: (request: Request, h: ResponseToolkit): string => { // eslint-disable-line @typescript-eslint/no-unused-vars
+      request.log(['params'], request.params)
+      request.log(['a', 'b'])
       return `<h1>Hello ${request.params.name}!</h1>`;
     }
   },

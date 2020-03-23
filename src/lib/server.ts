@@ -7,9 +7,11 @@ import Inert from '@hapi/inert'
 import Handlebars from 'handlebars'
 import Path from 'path'
 import Routes from './routes'
+import HapiPino from 'hapi-pino'
 
 const server = new Server({
     port: 3000,
+    debug: { request: ['params'] },
     host: 'localhost',
     routes: {
       files: {
@@ -22,6 +24,12 @@ server.route(Routes)
 
 exports.init = async (): Promise<Hapi.Server> => {
     await server.register([Inert, Vision]);
+    await server.register({
+      plugin: HapiPino,
+      options: {
+        prettyPrint: true,
+      },
+    });
 
     server.views({
       engines: { html: Handlebars },
@@ -52,4 +60,10 @@ export default async function start(): Promise<Hapi.Server> {
 process.on('unhandledRejection', (err) => {
     console.log(err);
     process.exit(1);
+});
+
+server.events.on('request', (event, tags) => {
+
+  console.log(tags.tags)
+  console.log(tags.data)
 });
