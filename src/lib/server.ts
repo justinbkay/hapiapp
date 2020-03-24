@@ -8,6 +8,7 @@ import Handlebars from 'handlebars'
 import Path from 'path'
 import Routes from './routes'
 import HapiPino from 'hapi-pino'
+import Joi from '@hapi/joi'
 
 const server = new Server({
     port: 3000,
@@ -20,6 +21,7 @@ const server = new Server({
     }
 });
 
+server.validator(Joi)
 server.route(Routes)
 
 exports.init = async (): Promise<Hapi.Server> => {

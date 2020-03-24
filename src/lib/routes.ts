@@ -4,10 +4,6 @@ import got from "got"
 import { CatFact } from "./catfact"
 import Joi from '@hapi/Joi'
 
-const schema = Joi.object({
-  name: Joi.string().min(4).max(10).alphanum().required()
-});
-
 export default [
   {
     method: 'GET',
@@ -26,7 +22,9 @@ export default [
     },
     options: {
       validate: {
-        params: schema
+        params: {
+          name: Joi.string().min(4).max(10).alphanum().required()
+        }
       },
     }
   },
