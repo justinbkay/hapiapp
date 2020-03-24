@@ -2,6 +2,11 @@ import Boom from "@hapi/boom";
 import { ResponseToolkit, Request, ResponseObject } from "@hapi/hapi";
 import got from "got"
 import { CatFact } from "./catfact"
+import Joi from '@hapi/Joi'
+
+const schema = Joi.object({
+  name: Joi.string().min(4).max(10).alphanum().required()
+});
 
 export default [
   {
@@ -18,6 +23,11 @@ export default [
       request.log(['params'], request.params)
       request.log(['a', 'b'])
       return `<h1>Hello ${request.params.name}!</h1>`;
+    },
+    options: {
+      validate: {
+        params: schema
+      },
     }
   },
   {
