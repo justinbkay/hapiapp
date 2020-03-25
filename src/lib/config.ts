@@ -51,6 +51,4 @@ config.loadFile('./config/' + env + '.json');
 // Perform validation
 config.validate({allowed: 'strict'});
 
-console.log(`Connecting to MySQL at: ${config.get("db.password")}`);
-
 export default config
