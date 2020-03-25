@@ -3,6 +3,7 @@ import { ResponseToolkit, Request, ResponseObject } from "@hapi/hapi";
 import got from "got"
 import { CatFact } from "./catfact"
 import Joi from '@hapi/Joi'
+import controllers from "./server/controllers"
 
 export default [
   {
@@ -15,11 +16,7 @@ export default [
   {
     method: 'GET',
     path: '/user/{name}',
-    handler: (request: Request, h: ResponseToolkit): string => { // eslint-disable-line @typescript-eslint/no-unused-vars
-      request.log(['params'], request.params)
-      request.log(['a', 'b'])
-      return `<h1>Hello ${request.params.name}!</h1>`;
-    },
+    handler: controllers.user.handler,
     options: {
       validate: {
         params: {
