@@ -10,11 +10,12 @@ import Routes from './routes'
 import HapiPino from 'hapi-pino'
 import Joi from '@hapi/joi'
 import { createConnection } from "typeorm"
+import config from './config'
 
 const server = new Server({
-    port: 3000,
+    port: config.get("port"),
     debug: { request: ['params'] },
-    host: 'localhost',
+    host: config.get("ip"),
     routes: {
       files: {
         relativeTo: Path.join(__dirname, 'public')
@@ -28,14 +29,14 @@ server.route(Routes)
 async function setupDB() {
   createConnection({
     type: "mysql",
-    host: "localhost",
+    host: config.get("db.host"),
     port: 3306,
-    username: "root",
-    password: "",
-    database: "hapiapp",
+    username: config.get("db.username"),
+    password: config.get("db.password"),
+    database: config.get("db.name"),
     charset: "UTF8_GENERAL_CI",
     entities: [`${__dirname}/entity/*.js`],
-    synchronize: true,
+    synchronize: false,
   })
 }
 
