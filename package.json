@@ -23,7 +23,10 @@
     "@types/hapi__joi": "^16.0.12",
     "got": "^10.6.0",
     "handlebars": "^4.7.3",
-    "hapi-pino": "^6.5.0"
+    "hapi-pino": "^6.5.0",
+    "mysql2": "^2.1.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.24"
   },
   "devDependencies": {
     "@hapi/code": "^8.0.1",

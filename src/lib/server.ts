@@ -9,6 +9,7 @@ import Path from 'path'
 import Routes from './routes'
 import HapiPino from 'hapi-pino'
 import Joi from '@hapi/joi'
+import { createConnection } from "typeorm"
 
 const server = new Server({
     port: 3000,
@@ -23,6 +24,20 @@ const server = new Server({
 
 server.validator(Joi)
 server.route(Routes)
+
+async function setupDB() {
+  createConnection({
+    type: "mysql",
+    host: "localhost",
+    port: 3306,
+    username: "root",
+    password: "",
+    database: "hapiapp",
+    charset: "UTF8_GENERAL_CI",
+    entities: [`${__dirname}/entity/*.js`],
+    synchronize: true,
+  })
+}
 
 exports.init = async (): Promise<Hapi.Server> => {
     await server.register([Inert, Vision]);
@@ -53,6 +68,7 @@ export default async function start(): Promise<Hapi.Server> {
       path: 'templates'
     });
 
+    await setupDB()
     await server.start()
     console.log('Server running on %s', server.info.uri);
 
@@ -65,7 +81,6 @@ process.on('unhandledRejection', (err) => {
 });
 
 server.events.on('request', (event, tags) => {
-
   console.log(tags.tags)
   console.log(tags.data)
 });
