@@ -1,10 +1,16 @@
 import { Request } from "@hapi/hapi"
 import { User } from "../../../lib/entity/User";
-import { getManager } from "typeorm"
+import { getRepository, Repository } from "typeorm"
+
+let userRepository: Repository<User>;
 
 async function saveUser(user: User) {
-  const entityManager = getManager();
-  await entityManager.save(user)
+  userRepository = getRepository(User)
+  await userRepository.save(user)
+}
+
+async function getUsers(): Promise<User[]> {
+  return await userRepository.find()
 }
 
 export async function handler(request: Request): Promise<string> {
@@ -14,9 +20,11 @@ export async function handler(request: Request): Promise<string> {
     user.age = 37
 
     try {
-    saveUser(user)
+      saveUser(user)
+      let users = await getUsers()
+      console.log(users)
     } catch (err) {
-    console.log(err)
+      console.log(err)
     }
 
     return `<h1>Hello ${request.params.name}!</h1>`;
