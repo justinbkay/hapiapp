@@ -1,6 +1,7 @@
 {
     "db": {
-        "password": "",
+        "password": "password",
         "host": "192.168.11.5"
-    }
+    },
+    "ip": "0.0.0.0"
 }
