@@ -23,8 +23,8 @@ const config = convict({
       db: {
         host: {
           doc: 'Database host name/IP',
-          format: '*',
-          default: 'localhost'
+          format: 'ipaddress',
+          default: '127.0.0.1'
         },
         name: {
           doc: 'Database name',
@@ -45,7 +45,7 @@ const config = convict({
 })
 
 // Load environment dependent configuration
-var env = config.get('env');
+const env = config.get('env');
 config.loadFile('./config/' + env + '.json');
 
 // Perform validation
