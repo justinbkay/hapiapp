@@ -26,7 +26,7 @@ const server = new Server({
 server.validator(Joi)
 server.route(Routes)
 
-async function setupDB() {
+async function setupDB(): Promise<void> {
   createConnection({
     type: "mysql",
     host: config.get("db.host"),

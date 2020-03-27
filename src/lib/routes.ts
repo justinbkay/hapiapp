@@ -2,7 +2,7 @@ import Boom from "@hapi/boom";
 import { ResponseToolkit, Request, ResponseObject } from "@hapi/hapi";
 import got from "got"
 import { CatFact } from "./catfact"
-import Joi from '@hapi/Joi'
+import Joi from '@hapi/joi'
 import controllers from "./server/controllers"
 
 export default [
