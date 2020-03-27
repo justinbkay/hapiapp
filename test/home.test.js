@@ -33,6 +33,12 @@ describe('GET /', () => {
     })
 
     it('user/name responds with 200', async () => {
+        Sinon.stub(userRepository, 'save', function (callback) {
+            callback(null, { firstName: 'Justin' });
+        });
+        Sinon.stub(userRepository, 'find', (callback) => {
+            callback(null, [{}])
+        })
         const res = await server.inject({
             method: 'get',
             url: '/user/Justin'
