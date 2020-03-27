@@ -27,6 +27,11 @@ export default [
   },
   {
     method: 'GET',
+    path: '/users',
+    handler: controllers.users.handler
+  },
+  {
+    method: 'GET',
     path: '/about',
     handler: (request: Request, h: ResponseToolkit): ResponseObject => { // eslint-disable-line @typescript-eslint/no-unused-vars
       return h.file('about.html')
