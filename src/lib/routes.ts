@@ -1,8 +1,8 @@
 import Boom from "@hapi/boom";
 import { ResponseToolkit, Request, ResponseObject } from "@hapi/hapi";
 import got from "got"
-import { CatFact } from "./catfact"
-import { Astronauts } from "./astronauts"
+import { CatFact } from "./interfaces/catfact"
+import { Astronauts } from "./interfaces/astronauts"
 import Joi from '@hapi/joi'
 import controllers from "./server/controllers"
 
