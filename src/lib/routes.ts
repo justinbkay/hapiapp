@@ -2,6 +2,7 @@ import Boom from "@hapi/boom";
 import { ResponseToolkit, Request, ResponseObject } from "@hapi/hapi";
 import got from "got"
 import { CatFact } from "./catfact"
+import { Astronauts } from "./astronauts"
 import Joi from '@hapi/joi'
 import controllers from "./server/controllers"
 
@@ -58,6 +59,21 @@ export default [
         },
       }).json()
       return body.text;
+    }
+  },
+  {
+    method: 'GET',
+    path: '/astronauts',
+    handler: async (request: Request, h: ResponseToolkit): Promise<object> => {
+      const body: Astronauts = await got.get("http://api.open-notify.org/astros.json", {
+        maxRedirects: 3,
+        headers: {
+          "Content-Type": "applicaton/json",
+        },
+      }).json()
+      return h.view('astros.html', {
+        people: body.people
+      })
     }
   },
   {

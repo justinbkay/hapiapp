@@ -1,8 +1,6 @@
 import { Request, ResponseToolkit, ResponseObject } from "@hapi/hapi"
 import { User } from "../../../lib/entity/User";
-import { getRepository, Repository } from "typeorm"
-
-let userRepository: Repository<User>;
+import { getRepository } from "typeorm"
 
 export async function handler(request: Request, h: ResponseToolkit): Promise<ResponseObject> {
     const users = await getRepository(User)
