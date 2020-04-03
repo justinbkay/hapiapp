@@ -11,7 +11,7 @@ export async function handler(request: Request, h: ResponseToolkit): Promise<obj
       },
     })
     .json();
-  return h.view("astros.html", {
+  return h.view("astros", {
     people: body.people,
   });
 }

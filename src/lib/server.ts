@@ -76,7 +76,7 @@ export default async function start(): Promise<Hapi.Server> {
   return server;
 }
 
-process.on("unhandledRejection", err => {
+process.on("unhandledRejection", (err) => {
   console.log(err);
   process.exit(1);
 });
