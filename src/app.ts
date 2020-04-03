@@ -1,6 +1,6 @@
-`use strict`
-import "reflect-metadata"
+`use strict`;
+import "reflect-metadata";
 
-import start from './lib/server'
+import start from "./lib/server";
 
-start()
+start();
