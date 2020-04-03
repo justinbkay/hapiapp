@@ -10,9 +10,7 @@ export default [
   {
     method: 'GET',
     path: '/',
-    handler: (request: Request , h: ResponseToolkit): string => { // eslint-disable-line @typescript-eslint/no-unused-vars
-      return '<h1>Hello World!</h1>';
-    }
+    handler: controllers.base.handler
   },
   {
     method: 'GET',
@@ -34,9 +32,7 @@ export default [
   {
     method: 'GET',
     path: '/about',
-    handler: (request: Request, h: ResponseToolkit): ResponseObject => { // eslint-disable-line @typescript-eslint/no-unused-vars
-      return h.file('about.html')
-    }
+    handler: controllers.about.handler
   },
   {
     method: 'GET',
