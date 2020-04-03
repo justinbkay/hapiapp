@@ -3,6 +3,7 @@ import { User } from "../../../lib/entity/User";
 import { getRepository } from "typeorm";
 
 export async function handler(request: Request, h: ResponseToolkit): Promise<ResponseObject> {
+  // prettier-ignore
   const users = await getRepository(User)
     .createQueryBuilder("user")
     .getMany();

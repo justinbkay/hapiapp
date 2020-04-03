@@ -14,11 +14,12 @@ export default [
     options: {
       validate: {
         params: {
+          // prettier-ignore
           name: Joi.string()
             .min(4)
             .max(10)
             .alphanum()
-            .required(),
+            .required()
         },
       },
     },
