@@ -10,7 +10,6 @@
     "start": "nodemon -e ts  --exec \"yarn run compile\"",
     "compile": "tsc && yarn run copy-template && node ./dist/app.js",
     "lint": "eslint . --ext .ts,.tsx",
-    "pretty": "prettier --write '**/*.ts'",
     "copy-template": "copyfiles -u 1 ./src/**/*.html ./dist"
   },
   "dependencies": {
@@ -23,10 +22,12 @@
     "@types/hapi-pino": "^6.4.0",
     "@types/hapi__inert": "^5.2.0",
     "@types/hapi__joi": "^16.0.12",
+    "@types/luxon": "^1.22.0",
     "convict": "^5.2.0",
     "got": "^10.6.0",
     "handlebars": "^4.7.3",
     "hapi-pino": "^6.5.0",
+    "luxon": "^1.23.0",
     "mysql2": "^2.1.0",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.24"

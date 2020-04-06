@@ -54,4 +54,9 @@ export default [
     path: "/{any*}",
     handler: controllers.catchall.handler,
   },
+  {
+    method: ["GET"],
+    path: "/dhl_fsc",
+    handler: controllers.dhlfsc.handler,
+  },
 ];
