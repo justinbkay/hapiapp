@@ -1,23 +1,27 @@
-import got from "got";
+// import got from "got";
+import axios from "axios";
 import { DateTime } from "luxon";
 
-const dhlURL = "http://www.dhl-usa.com/en/express/shipping/shipping_advice/express_fuel_surcharge.html";
+const dhlURL = "";
 
 export async function handler(): Promise<number> {
-  const { body } = await got.get(dhlURL, {
-    maxRedirects: 3,
-    responseType: "text",
-  });
-
   const today = DateTime.local().toISODate();
-  const matches: RegExpMatchArray | null = body.match(/>([\d.]+)%<.td>/);
-
-  console.log(today);
-  if (!matches || matches.length < 2) {
-    throw new Error("Surcharge not found");
-  }
-
-  return parseFloat(matches[1]);
+  let rate = 0;
+  await axios
+    .get(dhlURL)
+    .then((response) => {
+      console.log(today);
+      const matches: RegExpMatchArray | null = String(response.data).match(/>([\d.]+)%<.td>/);
+      if (matches !== null) {
+        rate = parseFloat(matches[1]);
+      } else {
+        rate = -1;
+      }
+    })
+    .catch((error) => {
+      throw error;
+    });
+  return rate;
 }
 
 export default {
