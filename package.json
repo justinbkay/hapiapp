@@ -30,7 +30,7 @@
     "luxon": "^1.23.0",
     "mysql2": "^2.1.0",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.24"
+    "typeorm": "^0.2.25"
   },
   "devDependencies": {
     "@hapi/code": "^8.0.1",
