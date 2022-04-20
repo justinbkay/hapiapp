@@ -23,7 +23,7 @@
     "@types/hapi__inert": "^5.2.0",
     "@types/hapi__joi": "^16.0.12",
     "@types/luxon": "^1.22.0",
-    "convict": "^5.2.0",
+    "convict": "^6.2.2",
     "got": "^10.6.0",
     "handlebars": "^4.7.3",
     "hapi-pino": "^6.5.0",
