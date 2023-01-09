@@ -27,7 +27,7 @@
     "got": "^10.6.0",
     "handlebars": "^4.7.3",
     "hapi-pino": "^6.5.0",
-    "luxon": "^1.23.0",
+    "luxon": "^2.5.2",
     "mysql2": "^2.1.0",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.24"
